@@ -1,0 +1,22 @@
+{
+  "name": "robo-video-maker",
+  "version": "1.0.0",
+  "description": "Robô para criar videos",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leandrovboas/robo-video-maker.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Leandro Vilas Boas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leandrovboas/robo-video-maker/issues"
+  },
+  "homepage": "https://github.com/leandrovboas/robo-video-maker#readme"
+}
