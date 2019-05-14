@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/leandrovboas/robo-video-maker#readme",
   "dependencies": {
+    "algorithmia": "^0.3.10",
     "readline-sync": "^1.4.9"
   }
 }
