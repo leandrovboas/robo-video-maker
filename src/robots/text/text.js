@@ -6,7 +6,7 @@ const breakContentIntoSentences = require('./breakContentIntoSentences')
 async function robot(content){
 	await fetchContentFormWikipedia(content)
 	const sourceContentSanitize = sanitizeContent(content.sourceContentOriginal)
-	const sentences = breakContentIntoSentences(content.sourceContentSanitize)
+	const sentences = breakContentIntoSentences(sourceContentSanitize)
 
 	async function fetchContentFormWikipedia(content) {
 
