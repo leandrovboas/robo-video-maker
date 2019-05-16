@@ -24,7 +24,7 @@ async function start(){
 		return selectedPrefixText
 	}
 
-	//console.log(contentText)
+	console.log(contentText)
 }
 
 start()
