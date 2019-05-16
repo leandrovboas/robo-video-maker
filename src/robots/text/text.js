@@ -2,11 +2,13 @@ const Algorithmia = require("algorithmia");
 const algorithmiaApiKey = require('../../credentials/algorithmia.json').apiKey
 const sanitizeContent = require('./sanitizeContent')
 const breakContentIntoSentences = require('./breakContentIntoSentences')
+const watsonGetKeywords = require('./watson')
 
 async function robot(content){
 	await fetchContentFormWikipedia(content)
 	const sourceContentSanitize = sanitizeContent(content.sourceContentOriginal)
 	const sentences = breakContentIntoSentences(sourceContentSanitize)
+	const keywords = await watsonGetKeywords(sentences)
 
 	async function fetchContentFormWikipedia(content) {
 
@@ -24,6 +26,7 @@ async function robot(content){
 
 	return {
 		...content,
+		keywords,
 		sentences,
 		sourceContentSanitize
 	}
