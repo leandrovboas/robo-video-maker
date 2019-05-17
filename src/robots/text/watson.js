@@ -12,18 +12,18 @@ const nlu = new NaturalLanguageUnderstandingV1({
     return new Promise((resolve, reject) => {
       nlu.analyze({
         features: {
-            keywords: {}
-          },
-        text: sentence
+          keywords: {}
+        },
+        text: sentence.text
       }, (error, response) => {
         if (error) {
           reject(error)
           return
         }
 
-        const keywords = response.keywords.map(keyword => keyword.text)
+        sentence.keywords = response.keywords.map(keyword => keyword.text)
 
-        resolve(keywords)
+        resolve(sentence)
       })
     })
   }
