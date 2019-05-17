@@ -1,12 +1,14 @@
 const Algorithmia = require("algorithmia");
 const algorithmiaApiKey = require('../../credentials/algorithmia.json').apiKey
 const sanitizeContent = require('./sanitizeContent')
-const breakContentIntoSentences = require('./breakContentIntoSentences')
+const breakSentences = require('./breakSentences')
+const watsonGetKeywords = require('./watson')
 
 async function robot(content){
 	await fetchContentFormWikipedia(content)
 	const sourceContentSanitize = sanitizeContent(content.sourceContentOriginal)
-	const sentences = breakContentIntoSentences(sourceContentSanitize)
+	const breackIntosentences = breakSentences(sourceContentSanitize)
+	const sentencesWithKeywords = await fetchKeywordsOfAllSentences(limitMaxmumSentences(breackIntosentences))
 
 	async function fetchContentFormWikipedia(content) {
 
@@ -22,10 +24,19 @@ async function robot(content){
 		content.sourceContentOriginal = response.get().content
 	}
 
+	function limitMaxmumSentences (sentences) {
+		return sentences.slice(0, content.maximumSentences) 
+	}
+	
+	async function fetchKeywordsOfAllSentences(sentences) {
+		const listOfKeywordsToFetch = sentences.map( async sentence => await watsonGetKeywords(sentence))
+		return Promise.all(listOfKeywordsToFetch)
+	}
+
 	return {
 		...content,
-		sentences,
-		sourceContentSanitize
+		sourceContentSanitize,
+		sentences: sentencesWithKeywords
 	}
 }
 
