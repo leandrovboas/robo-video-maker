@@ -8,7 +8,7 @@ const nlu = new NaturalLanguageUnderstandingV1({
   })
 
 
-  module.exports = async function fetchWatsonAndReturnKeywords(sentence) {
+  async function fetchWatsonAndReturnKeywords(sentence) {
     return new Promise((resolve, reject) => {
       nlu.analyze({
         features: {
@@ -27,3 +27,9 @@ const nlu = new NaturalLanguageUnderstandingV1({
       })
     })
   }
+
+
+  module.exports = async function fetchKeywordsOfAllSentences(sentences) {
+		const listOfKeywordsToFetch = sentences.map( async sentence => await fetchWatsonAndReturnKeywords(sentence))
+		return Promise.all(listOfKeywordsToFetch)
+	}
