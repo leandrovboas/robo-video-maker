@@ -22,6 +22,8 @@
   "homepage": "https://github.com/leandrovboas/robo-video-maker#readme",
   "dependencies": {
     "algorithmia": "^0.3.10",
+    "dotenv": "^8.0.0",
+    "googleapis": "^40.0.0",
     "readline-sync": "^1.4.9",
     "sbd": "^1.0.15",
     "superagent": "^5.0.5",
