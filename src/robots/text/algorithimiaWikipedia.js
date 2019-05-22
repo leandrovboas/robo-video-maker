@@ -1,5 +1,5 @@
 const Algorithmia = require("algorithmia");
-const algorithmiaApiKey = require('../../credentials/algorithmia.json').apiKey
+const algorithmiaApiKey = require('../../credentials/algorithmia')
 
 module.exports = async function fetchContentFormWikipedia(content) {
 
@@ -8,7 +8,7 @@ module.exports = async function fetchContentFormWikipedia(content) {
         "lang": "pt"
         };
 
-    const response =await Algorithmia.client(algorithmiaApiKey)
+    const response =await Algorithmia.client(algorithmiaApiKey.apiKey)
         .algo("web/WikipediaParser/0.1.2?timeout=300")
         .pipe(input);
 
