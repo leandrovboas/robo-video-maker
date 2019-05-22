@@ -1,9 +1,9 @@
-const watsonApiKey = require('../../credentials/watson-nlu.json').apikey
+const watsonKey = require('../../credentials/watson-nlu');
 const NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-language-understanding/v1.js')
 
 const nlu = new NaturalLanguageUnderstandingV1({
-    iam_apikey: watsonApiKey,
-    url: 'https://gateway.watsonplatform.net/natural-language-understanding/api/',
+    iam_apikey: watsonKey.apiKey,
+    url: watsonKey.url,
     version: '2018-04-05'
   })
 
