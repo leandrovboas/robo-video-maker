@@ -1,7 +1,7 @@
 const readline = require('readline-sync')
 const state = require('../state/index')
 
-function robot() {
+async function robot() {
   const content = {
     maximumSentences: 7
   }
