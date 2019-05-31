@@ -1,4 +1,6 @@
 /* eslint-disable no-plusplus */
+const imageDownloader = require('image-downloader')
+
 const googleImage = require('./GoogleImages')
 const state = require('../state/index')
 
@@ -25,7 +27,7 @@ content.downloadImages = []
           throw new Error('Imagem já baixada')
         }
         
-        // await downloadImage()
+        await downloadAndSave(imageUrl, `${sentenceIndex}-original.png`);
         content.downloadImages.push(imageUrl)
         console.log(`> [${sentenceIndex}] [${imageIndex}] Baixou a imagem com sucesso: ${imageUrl}`)
         break
@@ -34,6 +36,14 @@ content.downloadImages = []
       }
     }
   }
+}
+
+
+async function downloadAndSave(url, fileName){
+  return imageDownloader.image({
+    url: url,
+    dest: `./src/content/${fileName}`
+  })
 }
 
 module.exports = robot

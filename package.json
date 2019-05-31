@@ -24,7 +24,7 @@
     "algorithmia": "^0.3.10",
     "dotenv": "^8.0.0",
     "googleapis": "^40.0.0",
-    "image-download": "^1.1.0",
+    "image-downloader": "^3.4.2",
     "readline-sync": "^1.4.9",
     "sbd": "^1.0.15",
     "superagent": "^5.0.5",
